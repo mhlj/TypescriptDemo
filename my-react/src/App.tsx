@@ -6,17 +6,12 @@ import './App.css'
 
 function App() {
   return (
-    <>
-      <nav style={{ padding: '1rem', borderBottom: '1px solid #eee' }}>
-        <Link to="/" style={{ marginRight: '1rem' }}>首页</Link>
-        <Link to="/about">关于</Link>
-      </nav>
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </>
   )
 }
 
