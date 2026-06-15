@@ -1,28 +1,77 @@
-import { useState } from 'react'
+import React from 'react';
+import { CopyOutlined, RedoOutlined, UserOutlined } from '@ant-design/icons';
+import { Actions, Bubble } from '@ant-design/x';
+import { Avatar, Flex } from 'antd';
+import './index.css'
 
-export default function ChatContent() {
-  const [messages, setMessages] = useState([
-    {
-      role: 'user',
-      content: '你好'
-    },
-    {
-      role: 'assistant',
-      content: '你好！有什么我可以帮助你的吗？'
-    }
-  ])
-  return (
-    <div className="chat-content">
+const actionItems = [
+  {
+    key: 'retry',
+    icon: <RedoOutlined />,
+    label: 'Retry',
+  },
+  {
+    key: 'copy',
+    icon: <CopyOutlined />,
+    label: 'Copy',
+  },
+];
+
+const ChatContent = () => (
+   <div className="chat-content">
       <div className="chat-content-header">
-        <h2>会话内容</h2>
+        <h4>会话内容</h4>
       </div>
-      {messages.map((message, index) => (
-        <div key={index}>
-          {message.role === 'user' ? '用户' : '助手'}
-          {message.content}
-        </div>
-      ))}
-    </div>
-  )
-}
+      <div className="chat-content-messages">
+        <Flex vertical gap="small">
+          <Flex gap="small" wrap>
+            <div style={{ width: '100%' }}>
+              <Bubble
+                content="outer footer"
+                header="footer"
+                avatar={<Avatar icon={<UserOutlined />} />}
+                footer={(content) => <Actions items={actionItems} onClick={() => console.log(content)} />}
+              />
+            </div>
+          </Flex>
+          <Flex gap="small" wrap>
+            <div style={{ width: '100%' }}>
+              <Bubble
+                content="inner footer"
+                placement="end"
+                footerPlacement="inner-end"
+                header="footer"
+                avatar={<Avatar icon={<UserOutlined />} />}
+                footer={(content) => <Actions items={actionItems} onClick={() => console.log(content)} />}
+              />
+            </div>
+          </Flex>
+          <Flex gap="small" wrap>
+            <div style={{ width: '100%' }}>
+              <Bubble
+                content="outer footer and align right"
+                footerPlacement="outer-end"
+                header="footer"
+                avatar={<Avatar icon={<UserOutlined />} />}
+                footer={(content) => <Actions items={actionItems} onClick={() => console.log(content)} />}
+              />
+            </div>
+          </Flex>
+          <Flex gap="small" wrap>
+            <div style={{ width: '100%' }}>
+              <Bubble
+                content="inner footer and align left"
+                placement="end"
+                footerPlacement="inner-start"
+                header="footer"
+                avatar={<Avatar icon={<UserOutlined />} />}
+                footer={(content) => <Actions items={actionItems} onClick={() => console.log(content)} />}
+              />
+            </div>
+          </Flex>
+        </Flex>
+      </div>
+   </div>
+);
 
+export default ChatContent;

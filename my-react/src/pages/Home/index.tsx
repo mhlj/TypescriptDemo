@@ -8,11 +8,11 @@ function Home() {
   return (
     <div id="home" className="home">
       {/* 左侧会话功能区 */}
-      <div id="chat-list" className="chat-list">
+      <div id="chat-list" className="chat-list-container">
         <ChatList />
       </div>  
       {/* 中间会话内容区 */}
-      <div id="chat-content" className="chat-content">
+      <div id="chat-content" className="chat-content-container">
         <ChatContent />
         <ChatInput />
       </div>
